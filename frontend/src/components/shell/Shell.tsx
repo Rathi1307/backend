@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import StatusPill from "./StatusPill";
 
 const nav = [
-    { href: "/dashboard", label: "Dashboard" },
+    { href: "/", label: "Home" },
+    { href: "/dashboard-main", label: "Dashboard" },
     { href: "/manage", label: "Manage" },
     { href: "/ai", label: "AI" },
 ];
@@ -17,8 +18,10 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-[260px_1fr]">
             <aside className="hidden lg:block border-r border-neutral-800/80 bg-neutral-950/60">
                 <div className="px-5 py-5 border-b border-neutral-800/80">
-                    <div className="text-xl font-semibold tracking-tight">AlgoRail</div>
-                    <div className="text-xs text-neutral-400">Controller Console</div>
+                    <Link href="/" className="block">
+                        <div className="text-xl font-semibold tracking-tight">AlgoRail</div>
+                        <div className="text-xs text-neutral-400">Controller Console</div>
+                    </Link>
                 </div>
                 <nav className="px-2 py-4 space-y-1">
                     {nav.map((item) => {

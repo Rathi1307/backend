@@ -218,14 +218,11 @@ export default function ControllerDashboard() {
     );
 }
 
-// Deprecated local KPI, replaced by components/ui
-
 function severityToClass(sev: number) {
     if (sev >= 5) return "bg-red-500/20 text-red-300 border border-red-500/30";
     if (sev >= 3) return "bg-amber-500/20 text-amber-300 border border-amber-500/30";
     return "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
 }
-
 
 function AutoRecommendation({ competing, trains }: { competing: string[]; trains: LiveTrain[] }) {
     const candidates = trains.filter((t) => competing.includes(t.train_id));
@@ -241,8 +238,6 @@ function AutoRecommendation({ competing, trains }: { competing: string[]; trains
         </div>
     );
 }
-
-
 
 function AlertActions({ alert, trains }: { alert: ConflictAlert; trains: LiveTrain[] }) {
     const [submitting, setSubmitting] = useState<string | null>(null);
@@ -299,4 +294,3 @@ function AlertActions({ alert, trains }: { alert: ConflictAlert; trains: LiveTra
         </div>
     );
 }
-

@@ -59,6 +59,10 @@ export default function AIPage() {
         }
     };
 
+    const copyPayload = () => {
+        navigator.clipboard.writeText(payload);
+    };
+
     return (
         <div className="px-6 py-8 mx-auto max-w-7xl">
             <div className="mb-8 flex items-center justify-between">
@@ -67,14 +71,16 @@ export default function AIPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <Card title="Request" right={<button onClick={() => navigator.clipboard.writeText(payload)} className="text-xs px-2 py-1 rounded-md border border-neutral-800 hover:bg-neutral-900">Copy</button>}>
+                <Card title="Request" right={
+                    <button onClick={copyPayload} className="btn text-xs">Copy</button>
+                }>
                     <textarea
-                        className="w-full h-[420px] rounded-md bg-neutral-950 border border-neutral-800 p-3 font-mono text-sm"
+                        className="input w-full h-[420px] font-mono text-sm"
                         value={payload}
                         onChange={(e) => setPayload(e.target.value)}
                     />
                     <div className="mt-3 flex items-center gap-3">
-                        <button onClick={submit} disabled={loading} className="rounded-md bg-emerald-600 hover:bg-emerald-500 disabled:opacity-60 px-4 py-2 font-medium">
+                        <button onClick={submit} disabled={loading} className="btn btn-primary">
                             {loading ? "Submitting…" : "Submit to AI"}
                         </button>
                         {error && <div className="text-rose-400 text-sm">{error}</div>}
@@ -90,5 +96,3 @@ export default function AIPage() {
         </div>
     );
 }
-
-

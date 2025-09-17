@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frontend + Backend Demo</title>
+</head>
+<body>
+    <h1>Frontend + Backend Demo</h1>
+    <button onclick="callApi()">Call Backend API</button>
+    <div id="result"></div>
+
+    <script>
+        async function callApi() {
+            try {
+                const response = await fetch('http://localhost:3000/api/hello');
+                const data = await response.json();
+                document.getElementById('result').textContent = data.message;
+            } catch (error) {
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
